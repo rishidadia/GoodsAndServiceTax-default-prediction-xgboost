@@ -113,7 +113,4 @@ GitHub renders Jupyter notebooks in light mode by default.
 For best viewing experience, open the notebook locally or in VS Code.
 
 ---
-
-## Author
-
-Built as a focused case study in imbalanced classification and metric-driven machine learning.
+dadiarishi@gmail.com
