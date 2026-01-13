@@ -1,116 +1,70 @@
-# GST-Based Loan Default Prediction using XGBoost
+GST Compliance Classification using XGBoost
 
-This repository presents a practical machine learning case study for predicting loan defaults using GST-linked transactional and behavioral features. The focus is on handling class imbalance and evaluating models using appropriate metrics rather than accuracy.
+This project implements a machine learning pipeline to classify GST compliance outcomes using structured GST transaction data. The focus is on handling class imbalance, model optimization, and interpretability, rather than naive accuracy-based prediction.
 
----
+Problem Statement
 
-## Problem Statement
+GST datasets are often highly imbalanced, where non-compliance or abnormal outcomes form a minority class.
+Traditional accuracy-based models fail to capture these critical cases.
 
-Predict whether a customer will default on a loan based on GST-related financial behavior and categorical attributes.
+The objective of this project is to:
 
-Key challenges addressed:
-- Severe class imbalance
-- Misleading nature of accuracy in imbalanced datasets
-- Metric-driven model evaluation
+Build a robust classification model on GST data
 
----
+Improve minority-class detection using threshold optimization
 
-## Dataset Overview
+Provide interpretability into model decisions
 
-- Binary classification problem (Default / No Default)
-- Heavily imbalanced target variable
-- Mix of numerical and categorical features
+Approach
 
-> The full dataset is not included due to GitHub file size limits.  
-> This repository focuses on modeling decisions and evaluation methodology.
+Performed data cleaning, preprocessing, and feature handling on structured GST data
 
----
+Trained an XGBoost classifier suitable for tabular and imbalanced datasets
 
-## Evaluation Metrics
+Used Optuna for automated hyperparameter optimization targeting F1-score
 
-Accuracy was intentionally avoided for model selection.
+Applied decision threshold tuning to improve minority-class recall
 
-Metrics used:
-- Precision
-- Recall
-- F1 Score
-- ROC-AUC
+Interpreted model predictions using SHAP for feature-level explainability
 
-Primary optimization metric: **F1 Score**
+Technologies Used
 
----
+Python
 
-## Modeling Approach
+XGBoost
 
-Models explored:
-- Logistic Regression (baseline)
-- Random Forest
-- XGBoost (final model)
+Scikit-learn
 
-XGBoost was selected due to strong performance on structured tabular data and robustness under class imbalance.
+Optuna
 
----
+SHAP
 
-## Handling Class Imbalance
+Pandas, NumPy, Matplotlib
 
-Approaches considered:
-- Metric-aware optimization
-- Class weighting
-- Sampling strategies
+Evaluation Metrics
 
-Final choice: **RandomOverSampler**
+Given the imbalanced nature of the data, model performance was evaluated using:
 
-Why RandomOverSampler:
-- Preserves all majority-class information
-- Improves minority-class signal
-- Empirically improved recall and F1 score
+F1-score
 
-Over-sampling was applied only on training data to prevent leakage.
+ROC-AUC
 
----
+Confusion Matrix
 
-## Validation Strategy
+Accuracy was intentionally de-emphasized in favor of metrics that better reflect real-world classification performance.
 
-- Stratified cross-validation
-- Sampling performed on training folds only
-- Hyperparameter tuning using Optuna
-- Model selection based on mean F1 score
+Key Results
 
----
+Optuna-based tuning significantly improved model generalization
 
-## Final Pipeline
+Decision threshold optimization improved minority-class F1 score by ~18%
 
-Target Encoding
-→ RandomOverSampler
-→ XGBoost Classifier
+SHAP analysis provided clear insights into the most influential GST features
 
+Key Takeaways
 
----
+Metric selection is critical for imbalanced classification problems
 
-## Key Takeaways
+Threshold tuning can be as impactful as model tuning
 
-- Accuracy is unreliable for imbalanced classification
-- F1 score provides a better optimization objective
-- Over-sampling can improve minority-class detection
-- Validation-driven decisions are critical
-
----
-
-## Tech Stack
-
-- Python
-- XGBoost
-- scikit-learn
-- imbalanced-learn
-- category-encoders
-- Optuna
-
----
-
-## Notes
-
-GitHub renders Jupyter notebooks in light mode by default.  
-For best viewing experience, open the notebook locally or in VS Code.
-
----
-dadiarishi@gmail.com
+Explainability tools like SHAP are essential for trust in financial/compliance models
