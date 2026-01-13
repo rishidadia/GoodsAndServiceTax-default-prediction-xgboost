@@ -1,70 +1,70 @@
-GST Compliance Classification using XGBoost
+# GST Compliance Risk Classification using XGBoost
 
-This project implements a machine learning pipeline to classify GST compliance outcomes using structured GST transaction data. The focus is on handling class imbalance, model optimization, and interpretability, rather than naive accuracy-based prediction.
+A machine learning project that **screens GST transaction data** to flag **potentially non-compliant or high-risk accounts** using optimized gradient boosting and model explainability.
 
-Problem Statement
+---
 
-GST datasets are often highly imbalanced, where non-compliance or abnormal outcomes form a minority class.
-Traditional accuracy-based models fail to capture these critical cases.
+## 📌 Problem Statement
 
-The objective of this project is to:
+GST transaction datasets are typically **highly imbalanced**, where only a small fraction of accounts exhibit non-compliant or suspicious patterns.  
+Manual review at scale is inefficient and error-prone.
 
-Build a robust classification model on GST data
+This project aims to build a **risk-flagging system** that:
+- Automatically screens GST transaction records  
+- Prioritizes detection of rare, high-risk cases  
+- Provides transparency into model decisions  
 
-Improve minority-class detection using threshold optimization
+---
 
-Provide interpretability into model decisions
+## ⚙️ Approach
 
-Approach
+- Performed data cleaning and preprocessing on structured GST transaction data  
+- Trained an **XGBoost classifier** suited for imbalanced tabular datasets  
+- Used **Optuna** for hyperparameter optimization targeting F1-score  
+- Applied **decision threshold tuning** to improve minority-class detection  
+- Used **SHAP** to explain predictions and identify influential GST features  
 
-Performed data cleaning, preprocessing, and feature handling on structured GST data
+---
 
-Trained an XGBoost classifier suitable for tabular and imbalanced datasets
+## 🧰 Technologies Used
 
-Used Optuna for automated hyperparameter optimization targeting F1-score
+- **Python**
+- **XGBoost**
+- **Scikit-learn**
+- **Optuna**
+- **SHAP**
+- Pandas, NumPy, Matplotlib
 
-Applied decision threshold tuning to improve minority-class recall
+---
 
-Interpreted model predictions using SHAP for feature-level explainability
+## 📊 Evaluation Metrics
 
-Technologies Used
+Given the imbalanced nature of GST data, model performance was evaluated using:
+- **F1-score**
+- **ROC-AUC**
+- **Confusion Matrix**
 
-Python
+Accuracy was intentionally de-emphasized in favor of metrics aligned with real-world risk screening.
 
-XGBoost
+---
 
-Scikit-learn
+## 🚀 Key Results
 
-Optuna
+- Hyperparameter tuning improved generalization performance  
+- Decision threshold optimization improved **minority-class F1 score by ~18%**  
+- SHAP analysis provided clear interpretability into high-risk prediction drivers  
 
-SHAP
+---
 
-Pandas, NumPy, Matplotlib
+## 🎯 Key Takeaways
 
-Evaluation Metrics
+- Class imbalance requires metric-driven modeling, not accuracy  
+- Threshold tuning can be as impactful as model tuning  
+- Explainability is essential for trust in compliance-related ML systems  
 
-Given the imbalanced nature of the data, model performance was evaluated using:
+---
 
-F1-score
+## ⚠️ Disclaimer
 
-ROC-AUC
-
-Confusion Matrix
-
-Accuracy was intentionally de-emphasized in favor of metrics that better reflect real-world classification performance.
-
-Key Results
-
-Optuna-based tuning significantly improved model generalization
-
-Decision threshold optimization improved minority-class F1 score by ~18%
-
-SHAP analysis provided clear insights into the most influential GST features
-
-Key Takeaways
-
-Metric selection is critical for imbalanced classification problems
-
-Threshold tuning can be as impactful as model tuning
-
-Explainability tools like SHAP are essential for trust in financial/compliance models
+This model is designed as a **screening tool**, not a definitive fraud detection system.  
+Flagged accounts should be **reviewed by domain experts** before any action is taken.
